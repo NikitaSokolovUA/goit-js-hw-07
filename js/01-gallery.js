@@ -22,13 +22,15 @@ let instance = '';
 
 
 function selectPicture(event) {
-    event.preventDefault()
+    const linkOriginalPicture = event.target.closest('.gallery__link').href    
 
     if (event.target.nodeName !== "IMG") {
      return;
-    }
+    }  
+
     
-    const linkOriginalPicture = event.target.parentNode.href
+    // console.log(event.target.closest('.gallery__link').href);
+
     instance = basicLightbox.create(`
 		<img  width="1400" height="900" src="${linkOriginalPicture}">
 	`, {
@@ -40,7 +42,8 @@ function selectPicture(event) {
         }
     })
         
-    instance.show()    
+    instance.show()  
+    event.preventDefault()
 }
 
 
