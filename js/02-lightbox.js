@@ -21,6 +21,6 @@ let gallery = new SimpleLightbox('.gallery a', {
     captionType: 'img',
     captionsData: 'alt',
     captionPosition: 'bottom',
-    captionDelay: 250
+    captionDelay: 250,
 });
 

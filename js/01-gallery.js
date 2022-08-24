@@ -23,6 +23,11 @@ let instance = '';
 
 function selectPicture(event) {
     event.preventDefault()
+
+    if (event.target.nodeName !== "IMG") {
+     return;
+    }
+    
     const linkOriginalPicture = event.target.parentNode.href
     instance = basicLightbox.create(`
 		<img  width="1400" height="900" src="${linkOriginalPicture}">
