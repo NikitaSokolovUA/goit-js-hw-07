@@ -31,24 +31,25 @@ function selectPicture(event) {
     const linkOriginalPicture = event.target.parentNode.href
     instance = basicLightbox.create(`
 		<img  width="1400" height="900" src="${linkOriginalPicture}">
-	`)    
+	`, {
+        onShow: () => {
+            window.addEventListener('keydown', onKeyModalClose)
+        },
+        onClose: () => {
+            window.removeEventListener('keydown', onKeyModalClose)
+        }
+    })
+        
+    instance.show()    
+}
 
-    instance.show(
-        window.addEventListener('keydown', onKeyModalClose)        
-    )
-}
-    
-function onCloseModal() {
-        window.removeEventListener('keydown', onKeyModalClose)
-        instance.close()
-}
-    
+
 function onKeyModalClose(event) {
     const KEY_CODE_ESC = 'Escape'
-    console.log(event);
+    console.log(event.code);
     
     if (event.code === KEY_CODE_ESC) {
-        onCloseModal();
+        instance.close()
     }
 }
 
